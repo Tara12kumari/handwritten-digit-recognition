@@ -1,3 +1,4 @@
+import os
 import gradio as gr
 import tensorflow as tf
 import numpy as np
@@ -50,4 +51,7 @@ with gr.Blocks(title="AI Handwritten Digit Recognition") as demo:
         outputs=result
     )
 
-demo.launch(server_name="0.0.0.0", server_port=7860)
+demo.launch(
+    server_name="0.0.0.0",
+    server_port=int(os.environ.get("PORT", 7860))
+)
