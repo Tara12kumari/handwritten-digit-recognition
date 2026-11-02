@@ -4,9 +4,14 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image, ImageOps
 
-model = tf.keras.models.load_model(
-    "/content/handwritten_digit_model.keras"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(
+    BASE_DIR,
+    "handwritten_digit_model.keras"
 )
+
+model = tf.keras.models.load_model(model_path)
 
 def predict_digit(image):
     if image is None:
